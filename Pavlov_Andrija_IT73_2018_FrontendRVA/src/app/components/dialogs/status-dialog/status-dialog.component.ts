@@ -29,12 +29,12 @@ export class StatusDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void {
+  /*ngOnDestroy(): void {
     this.subscription.unsubscribe();
-  }
+  }*/
 
   public add(): void {
-    this.subscription = this.statusService.addStatus(this.data)
+    this.statusService.addStatus(this.data)
     .subscribe(() => {
       this.snackBar.open('Uspesno dodat status: ' + this.data.naziv , 'U redu', {
         duration: 2500
@@ -50,9 +50,11 @@ export class StatusDialogComponent implements OnInit {
 
 
   public update(): void {
-    this.subscription = this.statusService.updateStatus(this.data)
-    .subscribe(data => {
-      this.snackBar.open('Uspesno modifikovan status: ' + data.naziv, 'U redu', {
+    console.log("Heloou");
+    this.statusService.updateStatus(this.data)
+    .subscribe(() => {
+      console.log(this.data.naziv);
+      this.snackBar.open('Uspesno modifikovan status: ' + this.data.naziv ,'U redu', {
         duration: 2500
       });
     }),
@@ -65,7 +67,7 @@ export class StatusDialogComponent implements OnInit {
   }
 
   public delete(): void {
-    this.subscription = this.statusService.deleteStatus(this.data.id)
+    this.statusService.deleteStatus(this.data.id)
       .subscribe(() => {
         this.snackBar.open('Uspesno obrisan status: ', 'U redu', {
           duration: 2500

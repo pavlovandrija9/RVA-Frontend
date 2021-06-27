@@ -46,7 +46,7 @@ export class StudentDialogComponent implements OnInit {
 
 
   public add(): void {
-    this.subscription = this.studentService.addStudent(this.data)
+    this.studentService.addStudent(this.data)
       .subscribe(() => {
         this.snackBar.open('Uspešno dodat student!', 'U redu', {
           duration: 2500
@@ -58,7 +58,7 @@ export class StudentDialogComponent implements OnInit {
   }
 
   public update(): void {
-    this.subscription = this.studentService.updateStudent(this.data)
+    this.studentService.updateStudent(this.data)
       .subscribe(() => {
         this.snackBar.open('Uspešno modifikovan student!', 'U redu', {
           duration: 2500
@@ -70,7 +70,7 @@ export class StudentDialogComponent implements OnInit {
   }
 
   public delete(): void {
-    this.subscription = this.studentService.deleteStudent(this.data.id)
+   this.studentService.deleteStudent(this.data.id)
       .subscribe(() => {
         this.snackBar.open('Uspešno obrisan student!', 'U redu', {
          duration: 2500

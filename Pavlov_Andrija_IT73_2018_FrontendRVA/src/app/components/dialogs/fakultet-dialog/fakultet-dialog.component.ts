@@ -1,4 +1,4 @@
-import { Subscription } from 'rxjs';
+
 import { FakultetService } from './../../../services/fakultet.service';
 import { Fakultet } from './../../../models/fakultet';
 import { Component, Inject, OnInit } from '@angular/core';
@@ -13,7 +13,6 @@ import { MatSnackBar } from '@angular/material/snack-bar';
 export class FakultetDialogComponent implements OnInit {
 
   public flag: number;
-  subscription: Subscription;
 
   constructor(public snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<FakultetDialogComponent>,
@@ -24,12 +23,9 @@ export class FakultetDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 
   public add(): void {
-    this.subscription = this.fakultetService.addFakultet(this.data)
+   this.fakultetService.addFakultet(this.data)
     .subscribe(() => {
       this.snackBar.open('Uspesno dodat fakultet: ' + this.data.naziv , 'U redu', {
         duration: 2500
@@ -45,7 +41,7 @@ export class FakultetDialogComponent implements OnInit {
 
 
   public update(): void {
-    this.subscription = this.fakultetService.updateFakultet(this.data)
+   this.fakultetService.updateFakultet(this.data)
     .subscribe(() => {
       this.snackBar.open('Uspesno modifikovan fakultet: ' + this.data.naziv, 'U redu', {
         duration: 2500
@@ -60,7 +56,7 @@ export class FakultetDialogComponent implements OnInit {
   }
 
   public delete(): void {
-    this.subscription = this.fakultetService.deleteFakultet(this.data.id)
+    this.fakultetService.deleteFakultet(this.data.id)
       .subscribe(() => {
         this.snackBar.open('Uspesno obrisan fakultet: ', 'U redu', {
           duration: 2500

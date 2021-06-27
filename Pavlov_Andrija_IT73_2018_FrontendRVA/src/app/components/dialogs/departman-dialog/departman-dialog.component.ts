@@ -1,3 +1,4 @@
+import { Subscription } from 'rxjs';
 import { FakultetService } from 'src/app/services/fakultet.service';
 import { DepartmanService } from './../../../services/departman.service';
 import { Departman } from './../../../models/departman';
@@ -5,7 +6,7 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { Fakultet } from 'src/app/models/fakultet';
 import { Component, Inject, OnInit } from '@angular/core';
-import { Subscription } from 'rxjs';
+
 
 @Component({
   selector: 'app-departman-dialog',
@@ -27,7 +28,7 @@ export class DepartmanDialogComponent implements OnInit {
 
 
   ngOnInit(): void {
-    this.subscription = this.fakultetService.getAllFakultet()
+   this.subscription = this.fakultetService.getAllFakultet()
       .subscribe(fakulteti => {
         this.fakulteti = fakulteti;
       }),
@@ -36,9 +37,6 @@ export class DepartmanDialogComponent implements OnInit {
       }
   }
 
-  onOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }
 
   compareTo(a: any, b: any) {
     return a.id == b.id;
@@ -46,7 +44,7 @@ export class DepartmanDialogComponent implements OnInit {
 
 
   public add(): void {
-    this.subscription = this.departmanService.addDepartman(this.data)
+    this.departmanService.addDepartman(this.data)
       .subscribe(()=> {
         this.snackBar.open('Uspešno dodat fakultet', 'U redu', {
           duration: 2500
@@ -62,7 +60,7 @@ export class DepartmanDialogComponent implements OnInit {
 
 
   public update(): void {
-    this.subscription = this.departmanService.updateDepartman(this.data)
+    this.departmanService.updateDepartman(this.data)
       .subscribe(()=> {
         this.snackBar.open('Uspešno modifikovan fakultet' + this.data.naziv, 'U redu', {
           duration: 2500
@@ -78,7 +76,7 @@ export class DepartmanDialogComponent implements OnInit {
 
 
     public delete(): void {
-      this.subscription = this.departmanService.deleteDepartman(this.data.id)
+     this.departmanService.deleteDepartman(this.data.id)
         .subscribe(() => {
           this.snackBar.open('Uspešno obrisan fakultet' + this.data.naziv, 'U redu', {
             duration: 2500

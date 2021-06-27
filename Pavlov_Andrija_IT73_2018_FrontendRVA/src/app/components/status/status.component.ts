@@ -1,6 +1,6 @@
 import { StatusService } from './../../services/status.service';
 import { Status } from './../../models/status';
-import { Component, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
