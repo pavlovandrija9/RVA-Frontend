@@ -6,7 +6,7 @@ import { Status } from './../../models/status';
 import { StudentService } from './../../services/student.service';
 import { Departman } from './../../models/departman';
 import { MatTableDataSource } from '@angular/material/table';
-import { Component, Input, OnInit, ViewChild } from '@angular/core';
+import { Component, Input, OnInit, ViewChild, OnChanges, OnDestroy } from '@angular/core';
 import { Student } from 'src/app/models/student';
 import { MatDialog } from '@angular/material/dialog';
 
@@ -16,7 +16,7 @@ import { MatDialog } from '@angular/material/dialog';
   templateUrl: './student.component.html',
   styleUrls: ['./student.component.css']
 })
-export class StudentComponent implements OnInit {
+export class StudentComponent implements OnInit, OnChanges, OnDestroy {
 
   displayedColumns = ['id', 'ime', 'prezime', 'brojIndeksa', 'status', 'departman', 'actions'];
   dataSource: MatTableDataSource<Student>;

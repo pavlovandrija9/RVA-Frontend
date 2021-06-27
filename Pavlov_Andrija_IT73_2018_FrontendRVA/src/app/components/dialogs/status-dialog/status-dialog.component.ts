@@ -1,4 +1,4 @@
-import { Subscription } from 'rxjs';
+
 import { StatusService } from './../../../services/status.service';
 
 import { Status } from './../../../models/status';
@@ -18,7 +18,6 @@ import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class StatusDialogComponent implements OnInit {
 
   public flag: number;
-  subscription: Subscription;
 
   constructor(public snackBar: MatSnackBar,
               public dialogRef: MatDialogRef<StatusDialogComponent>,
@@ -29,9 +28,6 @@ export class StatusDialogComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  /*ngOnDestroy(): void {
-    this.subscription.unsubscribe();
-  }*/
 
   public add(): void {
     this.statusService.addStatus(this.data)
@@ -50,7 +46,6 @@ export class StatusDialogComponent implements OnInit {
 
 
   public update(): void {
-    console.log("Heloou");
     this.statusService.updateStatus(this.data)
     .subscribe(() => {
       console.log(this.data.naziv);

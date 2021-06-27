@@ -1,6 +1,6 @@
 import { StatusService } from './../../services/status.service';
 import { Status } from './../../models/status';
-import { Component, OnChanges, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Component, OnChanges, OnDestroy, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
 import { MatDialog } from '@angular/material/dialog';
@@ -13,7 +13,7 @@ import { MatPaginator } from '@angular/material/paginator';
   templateUrl: './status.component.html',
   styleUrls: ['./status.component.css']
 })
-export class StatusComponent implements OnInit, OnDestroy {
+export class StatusComponent implements OnInit, OnDestroy, OnChanges {
 
   displayedColumns = ['id', 'naziv', 'oznaka', 'actions'];
   dataSource: MatTableDataSource<Status>;
@@ -26,10 +26,14 @@ export class StatusComponent implements OnInit, OnDestroy {
               public dialog: MatDialog) { }
 
 
-  ngOnInit(): void {
+  ngOnChanges(): void {
     this.loadData();
   }
 
+
+  ngOnInit(): void {
+    this.loadData();
+  }
 
   ngOnDestroy(): void {
     this.subscription.unsubscribe();

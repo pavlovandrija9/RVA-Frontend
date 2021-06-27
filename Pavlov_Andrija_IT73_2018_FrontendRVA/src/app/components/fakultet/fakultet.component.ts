@@ -1,7 +1,7 @@
 
 import { MatPaginator } from '@angular/material/paginator';
 import { FakultetDialogComponent } from './../dialogs/fakultet-dialog/fakultet-dialog.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, OnDestroy } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { MatTableDataSource } from '@angular/material/table';
 import { Subscription } from 'rxjs';
@@ -14,7 +14,7 @@ import { MatSort } from '@angular/material/sort';
   templateUrl: './fakultet.component.html',
   styleUrls: ['./fakultet.component.css']
 })
-  export class FakultetComponent implements OnInit {
+  export class FakultetComponent implements OnInit, OnChanges, OnDestroy {
 
   displayedColumns = ['id', 'naziv', 'sediste', 'actions'];
   dataSource: MatTableDataSource<Fakultet>;
