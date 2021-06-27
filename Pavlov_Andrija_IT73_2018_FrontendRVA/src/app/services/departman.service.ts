@@ -26,7 +26,7 @@ export class DepartmanService {
   }
 
   public deleteDepartman(id: number): Observable<any> {
-    return this.httpClient.delete(`${DEPARTMAN_URL}/${id}`)
+    return this.httpClient.delete(`${DEPARTMAN_URL}/${id}`);
   }
 
 

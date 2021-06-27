@@ -26,7 +26,7 @@ export class StatusService {
   }
 
   public deleteStatus(id: number): Observable<any> {
-    return this.httpClient.delete(`${STATUS_URL}/${id}`)
+    return this.httpClient.delete(`${STATUS_URL}/${id}`);
   }
 
 
